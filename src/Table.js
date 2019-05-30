@@ -1,11 +1,32 @@
 import React from "react"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './Table.css';
 class Table extends React.Component{
+    
+    constructor(props){
+        super(props);
+        this.state = {
+            teams: []
+        }
+    }
+
+    componentDidMount() {
+        fetch("https://api.nifs.no/stages/679874/table/")
+            .then(function(response){
+                return response.json()
+            })
+            .then(data => this.setState({teams: data.teams}))
+    }
+
     render(){
+
+        const sortedTeams = this.state.teams.sort((team1, team2) => {
+            return team1.position - team2.position
+          })
         console.log(this.props.teams)
-        const teamRows = this.props.teams.map((team)=> {
+        const teamRows = sortedTeams.map((team)=> {
             return <tr>
-                        <td>{team.place}. {team.name}</td>
+                        <td>{team.place}.  <Link to={`/team/${team.id}`} className ="LinkColor">{team.name}</Link> </td>
                         <td>{team.played}</td>
                         <td>{team.won}</td>
                         <td>{team.draw}</td>

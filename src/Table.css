@@ -10,3 +10,7 @@ th:not(:first-of-type){
     text-align: center;
 }
 
+.LinkColor{
+    color: white;
+  }
+
