@@ -1,0 +1,12 @@
+td:not(:first-of-type){
+    text-align: center;
+}
+
+th:first-of-type{
+    text-align: left;
+}
+
+th:not(:first-of-type){
+    text-align: center;
+}
+
