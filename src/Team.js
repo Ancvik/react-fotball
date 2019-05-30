@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom";
 
 class Team extends React.Component{
     constructor(props){
@@ -22,7 +23,7 @@ class Team extends React.Component{
             .slice(0, 5)
             .map((match)=>{  
                 return <li>
-                {match.homeTeam.name + " - " + match.awayTeam.name}
+                    <Link to={`/match/${match.id}`} className ="LinkColor">{match.homeTeam.name + " - " + match.awayTeam.name}</Link>                
                     </li>
             })
         return (

@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import './App.css';
 import Table from "./Table"
 import Team from "./Team"
+import Match from "./Match"
 
 class App extends React.Component {
 
@@ -16,6 +17,7 @@ class App extends React.Component {
          
           <Route path="/" exact component={Table} />
           <Route path="/team/:teamId" component={Team} />
+          <Route path="/match/:matchId" component={Match} />
 
           
           </div>
