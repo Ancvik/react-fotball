@@ -1,5 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom";
+import './Team.css';
 
 class Team extends React.Component{
     constructor(props){
@@ -26,11 +27,22 @@ class Team extends React.Component{
                     <Link to={`/match/${match.id}`} className ="LinkColor">{match.homeTeam.name + " - " + match.awayTeam.name}</Link>                
                     </li>
             })
+            const previousMatches = this.state.matches
+            .filter(match => match.matchStatusId === 1)
+            .map((match)=>{
+                return<li><Link to={`/matchstats/${match.externalIds.fiks}`} className ="LinkColor">{match.homeTeam.name + " - " + match.awayTeam.name}</Link>
+                </li>
+            })    
         return (
             <div>
+            <h2>Kamper Spilt:</h2>
                 <ul>
-                 {nextMatches}
+                {previousMatches}
                 </ul>
+            <h2>Neste 5 kampene:</h2>
+            <ul>
+            {nextMatches}
+            </ul>
 
 
             </div>

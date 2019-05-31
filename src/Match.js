@@ -10,7 +10,7 @@ class Match extends React.Component{
     }
     
     componentDidMount() {
-        fetch(`https://api.nifs.no/matches/${this.props.match.params.matchId}/headtohead/`)
+        fetch(`https://api.nifs.no/matches/${this.props.match.params.matchId}/headtohead/?includeOtherTournaments=1`)
             .then(function(response){
                 return response.json()
             })
@@ -64,4 +64,3 @@ class Match extends React.Component{
 }
     
 export default Match;
-    

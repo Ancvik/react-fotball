@@ -23,7 +23,6 @@ class Table extends React.Component{
         const sortedTeams = this.state.teams.sort((team1, team2) => {
             return team1.position - team2.position
           })
-        console.log(this.props.teams)
         const teamRows = sortedTeams.map((team)=> {
             return <tr>
                         <td>{team.place}.  <Link to={`/team/${team.id}`} className ="LinkColor">{team.name}</Link> </td>
