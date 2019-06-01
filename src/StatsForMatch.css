@@ -1,0 +1,14 @@
+table.stats{
+    align-self: center;
+width: 10%;
+}
+
+th.stats{
+    text-align: left;
+    align-self: center;
+}
+td.stats{
+    text-align: center;
+    align-self: center;
+
+}

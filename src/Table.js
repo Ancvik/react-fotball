@@ -26,23 +26,23 @@ class Table extends React.Component{
         const teamRows = sortedTeams.map((team)=> {
             return <tr>
                         <td>{team.place}.  <Link to={`/team/${team.id}`} className ="LinkColor">{team.name}</Link> </td>
-                        <td>{team.played}</td>
-                        <td>{team.won}</td>
-                        <td>{team.draw}</td>
-                        <td>{team.lost}</td>
-                        <td>{team.goalDifference}</td>
-                        <td>{team.points}</td>
+                        <td className="tabellverdier">{team.played}</td>
+                        <td className="tabellverdier">{team.won}</td>
+                        <td className="tabellverdier">{team.draw}</td>
+                        <td className="tabellverdier">{team.lost}</td>
+                        <td className="tabellverdier">{team.goalDifference}</td>
+                        <td className="tabellverdier">{team.points}</td>
                     </tr>
         })
         return(
-        <table>
+        <table className="tableEliteserien">
             <thead>
                 <tr>
                     <th colSpan="7">Eliteserien 2019</th>
 
                 </tr>
                 <tr>
-                    <th>Lag</th>
+                    <th className="Lag">Lag</th>
                     <th>K</th>
                     <th>S</th>
                     <th>U</th>

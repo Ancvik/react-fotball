@@ -23,26 +23,31 @@ class Team extends React.Component{
             .filter(match => match.matchStatusId !== 1)
             .slice(0, 5)
             .map((match)=>{  
-                return <li>
+                return <li className="kamp">
                     <Link to={`/match/${match.id}`} className ="LinkColor">{match.homeTeam.name + " - " + match.awayTeam.name}</Link>                
                     </li>
             })
             const previousMatches = this.state.matches
             .filter(match => match.matchStatusId === 1)
             .map((match)=>{
-                return<li><Link to={`/matchstats/${match.externalIds.fiks}`} className ="LinkColor">{match.homeTeam.name + " - " + match.awayTeam.name}</Link>
+                return<li className="kamp"><Link to={`/matchstats/${match.externalIds.fiks}`} className ="LinkColor">{match.homeTeam.name + " - " + match.awayTeam.name}</Link>
                 </li>
             })    
         return (
             <div>
             <h2>Kamper Spilt:</h2>
+            <div class="flex-container">
                 <ul>
                 {previousMatches}
                 </ul>
+            </div>
+            
             <h2>Neste 5 kampene:</h2>
-            <ul>
+            <div className="flex-container">
+            <ul className="kamp">
             {nextMatches}
             </ul>
+            </div>
 
 
             </div>

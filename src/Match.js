@@ -10,7 +10,7 @@ class Match extends React.Component{
     }
     
     componentDidMount() {
-        fetch(`https://api.nifs.no/matches/${this.props.match.params.matchId}/headtohead/?includeOtherTournaments=1`)
+        fetch(`https://api.nifs.no/matches/${this.props.match.params.matchId}/headtohead/`)
             .then(function(response){
                 return response.json()
             })
@@ -26,34 +26,34 @@ class Match extends React.Component{
        return ( 
         <React.Fragment>
         <h2>Head to head mellom {firstTeam.name} og {secondTeam.name}</h2>       
-            <table>
+            <table className="tabellHeadToHead">
                 <thead>
                     <tr>
-                        <td></td>
-                        <th>{firstTeam.name}</th>
-                        <th>Uavgjort</th>
-                        <th>{secondTeam.name}</th>
-                        <th>Mål</th>
-                        <th>Målforskjell</th>
+                        <td className="tabellHeadToHead"></td>
+                        <th className="tabellHeadToHead">{firstTeam.name}</th>
+                        <th className="tabellHeadToHead">Uavgjort</th>
+                        <th className="tabellHeadToHead">{secondTeam.name}</th>
+                        <th className="tabellHeadToHead">Mål</th>
+                        <th className="tabellHeadToHead">Målforskjell</th>
                     </tr>
                 </thead>
 
             <tbody>
                 <tr>
-                    <th>Stadioen til {firstTeam.name} </th>
-                    <td>{firstTeam.wonHome}</td>
-                    <td>{firstTeam.drawnHome}</td>
-                    <td>{firstTeam.lostHome}</td>
-                    <td>{firstTeam.goalsForHome}  -  {firstTeam.goalsAgainstHome}</td>
-                    <td>{firstTeam.goalsForHome - firstTeam.goalsAgainstHome}</td>
+                    <th className="tabellHeadToHead">Hjemmebanen til {firstTeam.name} </th>
+                    <td className="tabellHeadToHead">{firstTeam.wonHome}</td>
+                    <td className="tabellHeadToHead">{firstTeam.drawnHome}</td>
+                    <td className="tabellHeadToHead">{firstTeam.lostHome}</td>
+                    <td className="tabellHeadToHead">{firstTeam.goalsForHome}  -  {firstTeam.goalsAgainstHome}</td>
+                    <td className="tabellHeadToHead">{firstTeam.goalsForHome - firstTeam.goalsAgainstHome}</td>
                 </tr>
                 <tr>
-                    <th>Stadioen til {secondTeam.name} </th>
-                    <td>{firstTeam.wonAway}</td>
-                    <td>{firstTeam.drawnAway}</td>
-                    <td>{firstTeam.lostAway}</td>
-                    <td>{firstTeam.goalsForAway} - {firstTeam.goalsAgainstAway}</td>
-                    <td>{firstTeam.goalsForAway - firstTeam.goalsAgainstAway}</td>
+                    <th className="tabellHeadToHead">Hjemmebanen til {secondTeam.name} </th>
+                    <td className="tabellHeadToHead">{firstTeam.wonAway}</td>
+                    <td className="tabellHeadToHead">{firstTeam.drawnAway}</td>
+                    <td className="tabellHeadToHead">{firstTeam.lostAway}</td>
+                    <td className="tabellHeadToHead">{firstTeam.goalsForAway} - {firstTeam.goalsAgainstAway}</td>
+                    <td className="tabellHeadToHead">{firstTeam.goalsForAway - firstTeam.goalsAgainstAway}</td>
                 </tr>
             </tbody>
         </table>

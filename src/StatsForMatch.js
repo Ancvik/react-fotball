@@ -23,37 +23,40 @@ class StatsForMatch extends React.Component{
             return null
         }
    const stats = this.state.matchStats;
-       return ( 
+       return (
         <React.Fragment>
-        <h2>{stats.name}</h2>       
-            <table>
-                <thead>
-                    <tr>
-                        <td></td>
-                        <th>{stats.homeTeam.name}</th>
-                        <th>{stats.awayTeam.name}</th>
-                    </tr>
-                </thead>
+        <h2>Statistikk for kampen {stats.name} i {stats.stage.fullName}</h2>
 
+        <table className="stats">
             <tbody>
                 <tr>
-                    <th>Skudd</th>
-                    <td>{stats.matchStatistics.totalShotsHomeTeam}</td>
-                    <td>{stats.matchStatistics.totalShotsAwayTeam}</td>
+                    <th className="stats">Pause:</th>
+                    <td className="stats">{stats.result.homeScore45} - {stats.result.awayScore45}</td>
                 </tr>
                 <tr>
-                    <th>Skudd på mål</th>
-                    <td>{stats.matchStatistics.shotsOnGoalHomeTeam}</td>
-                    <td>{stats.matchStatistics.shotsOnGoalAwayTeam}</td>
+                    <th className="stats">Fulltid:</th>
+                    <td className="stats">{stats.result.homeScore90} - {stats.result.awayScore90}</td>
                 </tr>
+
                 <tr>
-                    <th>Ballbesittelse</th>
-                    <td>{stats.matchStatistics.possessionHomeTeam}</td>
-                    <td>{stats.matchStatistics.possessionAwayTeam}</td>
+                    <th className="stats">Skudd:</th>
+                    <td className="stats">{stats.matchStatistics.shotsOnGoalHomeTeam} - {stats.matchStatistics.totalShotsAwayTeam}</td>                    
                 </tr>
+                
+                <tr>
+                    <th className="stats">Skudd på mål:</th>
+                    <td className="stats">{stats.matchStatistics.totalShotsHomeTeam} - {stats.matchStatistics.totalShotsAwayTeam}</td>
+                </tr>
+
+                <tr>
+                    <th className="stats">Ballbesittelse:</th>
+                        <td className="stats">{stats.matchStatistics.possessionHomeTeam} - {stats.matchStatistics.possessionAwayTeam}</td>
+                </tr>
+
             </tbody>
         </table>
         </React.Fragment> 
+          
 
         );
     }

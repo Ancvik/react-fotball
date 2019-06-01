@@ -1,3 +1,17 @@
+table.tabellHeadToHead{
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 50%;
+    align-self: center;
+}
 h2{
     text-align: center;
+}
+td.tabellHeadToHead{
+    text-align: center;
+    border: 1px solid black;
+}
+th.tabellHeadToHead{
+    text-align: center;
+    border: 1px solid black;
 }

@@ -1,4 +1,9 @@
 ul{
-    text-align: center;
     list-style-type: none;
+}
+
+.flex-container{
+   display:flex;
+   justify-content:center;
+   text-align: left;
 }

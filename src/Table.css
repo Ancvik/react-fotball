@@ -1,17 +1,16 @@
-td:not(:first-of-type){
+td.tabellverdier{
     text-align: center;
 }
-
-th:first-of-type{
-    text-align: left;
+td.strek{
+  border-bottom: 4px solid black;
 }
 
-th:not(:first-of-type){
-    text-align: center;
+th.Lag{
+  text-align: left;
 }
 
 .LinkColor{
-    color: white;
+    color: black;
   }
   a:link {
     text-decoration: none;
@@ -24,3 +23,6 @@ th:not(:first-of-type){
   a:hover {
     text-decoration: underline;
   }
+table.tableEliteserien{
+width: 50%;
+}
