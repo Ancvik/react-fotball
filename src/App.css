@@ -1,10 +1,31 @@
 
-.App-header {
-  background-color: white;
+.App-body {
+  background-color: darkslategray;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-size: medium;
   color: black;
+  padding: 40px;
 }
+.App-header{
+  background-color: rgb(28, 46, 46)
+}
+h1.Overskrift{
+  font-size: 40px;
+  font-style: oblique;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  color: white;
+}
+
+li.info{
+  box-shadow: 0 0 35px black;
+  background-color: white;
+  width: 500px;
+}
+ul.info{
+  align-self: center;
+}
+
 

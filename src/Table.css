@@ -1,8 +1,37 @@
 td.tabellverdier{
     text-align: center;
 }
-td.strek{
-  border-bottom: 4px solid black;
+
+td.serielederLag{
+  background-color: green;
+}
+td.serielederVerdier{
+  background-color: green;
+  text-align: center;
+}
+
+td.europakvalikkLag{
+  background-color: lightgreen;
+}
+td.europakvalikkVerdier{
+  background-color: lightgreen;
+  text-align: center;
+}
+
+td.kvalikkLag{
+  background-color: lightcoral;
+}
+td.kvalikkVerdier{
+  background-color: lightcoral;
+  text-align: center;
+}
+
+td.nedrykkLag{
+  background-color: red;
+}
+td.nedrykkVerdier{
+  background-color: red;
+  text-align: center;
 }
 
 th.Lag{
@@ -24,5 +53,11 @@ th.Lag{
     text-decoration: underline;
   }
 table.tableEliteserien{
-width: 50%;
+background-color: white;
+box-shadow: 0 0 35px black;
+align-self: center;
+border-collapse: collapse;
+border: 1px solid black;
+border-spacing: 0;
+width: 500px;
 }

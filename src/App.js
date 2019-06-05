@@ -12,15 +12,15 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div>
-          <div className="App-header">
-         
+        <div className="App-header">
+          <h1 className="Overskrift">Stian sin fotballside</h1>
+          <div className="App-body">
           <Route path="/" exact component={Table} />
           <Route path="/team/:teamId" component={Team} />
           <Route path="/match/:matchId" component={Match} />
-          <Route path="/matchstats/:matchId" component={StatsForMatch} />
-          
-          </div>
+          <Route path="/matchstats/:matchId" component={StatsForMatch} />         
+         
+        </div>
 
         </div>
       </Router>
