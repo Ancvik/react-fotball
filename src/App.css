@@ -6,7 +6,7 @@
   flex-direction: column;
   font-size: medium;
   color: black;
-  padding: 40px;
+  padding-top: 40px;
 }
 .App-header{
   background-color: rgb(28, 46, 46)
