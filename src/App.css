@@ -6,7 +6,7 @@
   flex-direction: column;
   font-size: medium;
   color: black;
-  padding-top: 40px;
+  padding-top: 100px;
 }
 .App-header{
   background-color: rgb(28, 46, 46)
@@ -17,15 +17,35 @@ h1.Overskrift{
   font-family: "Times New Roman", Times, serif;
   text-align: center;
   color: white;
+  margin: 0;
+  padding: 20px;
+  padding-top: 25px;
+
 }
 
 li.info{
-  box-shadow: 0 0 35px black;
   background-color: white;
-  width: 500px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 ul.info{
+  box-shadow: 0 0 35px black;
+  width: 500px;
   align-self: center;
+  padding: 0;
+  display: flex;
+
+}
+
+span.boks{
+  margin: 10px;
+  margin-top: 14px;
+  display: inline-block; 
+  vertical-align: center;
+  background-color: red;
+  height: 10px;
+  width: 10px;
 }
 
 

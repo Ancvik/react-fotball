@@ -83,6 +83,7 @@ class Table extends React.Component{
                     </tr>
         })
         return(
+            <React.Fragment>
         <table className="tableEliteserien">
             <thead>
                 <tr>
@@ -101,8 +102,16 @@ class Table extends React.Component{
             </thead>
             <tbody>
                 {teamRows}
+                
             </tbody>
         </table>
+                <ul className="info">
+                  <li className="info"> <span className="boks" style={{backgroundColor: "green"}}></span> CL-Kvalikk</li>
+                  <li className="info"> <span className="boks" style={{backgroundColor: "lightgreen"}}></span> EL-Kvalikk</li>
+                  <li className="info"> <span className="boks" style={{backgroundColor: "lightcoral"}}></span> Kvalikk</li>
+                  <li className="info"> <span className="boks"></span> Nedrykk</li>
+                </ul>
+            </React.Fragment> 
         )
     }
 

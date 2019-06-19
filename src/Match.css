@@ -1,4 +1,6 @@
 table.tabellHeadToHead{
+    background-color: white;
+    box-shadow: 0 0 35px black;
     border-collapse: collapse;
     border: 1px solid black;
     width: 50%;

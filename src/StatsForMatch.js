@@ -43,15 +43,7 @@ class StatsForMatch extends React.Component {
                             <td className="stats">{stats.matchStatistics.totalShotsHomeTeam} - {stats.matchStatistics.totalShotsAwayTeam}</td>
                         </tr>
 
-                <tr>
-                    <th className="stats">Skudd:</th>
-                    <td className="stats">{stats.matchStatistics.totalShotsHomeTeam} - {stats.matchStatistics.totalShotsAwayTeam}</td>                    
-                </tr>
-                
-                <tr>
-                    <th className="stats">Skudd på mål:</th>
-                    <td className="stats">{stats.matchStatistics.shotsOnGoalHomeTeam} - {stats.matchStatistics.shotsOnGoalAwayTeam}</td>
-                </tr>
+
                         <tr>
                             <th className="stats">Skudd på mål:</th>
                             <td className="stats">{stats.matchStatistics.shotsOnGoalHomeTeam} - {stats.matchStatistics.shotsOnGoalAwayTeam}</td>

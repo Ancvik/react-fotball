@@ -6,7 +6,8 @@ class Team extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            matches: []
+            matches: [],
+            team: []
         }
     }
     
@@ -16,7 +17,6 @@ class Team extends React.Component{
                 return response.json()
             })
             .then(data => this.setState({matches: data}))
-
     }
     render(){
        const nextMatches = this.state.matches

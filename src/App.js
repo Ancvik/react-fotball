@@ -18,10 +18,7 @@ class App extends React.Component {
           <Route path="/" exact component={Table} />
           <Route path="/team/:teamId" component={Team} />
           <Route path="/match/:matchId" component={Match} />
-          <Route path="/matchstats/:matchId" component={StatsForMatch} /> 
-          <ul className="info">
-              <li className="info">djad dsas da fasf afsf </li>
-            </ul>      
+          <Route path="/matchstats/:matchId" component={StatsForMatch} />  
          
         </div>
 
