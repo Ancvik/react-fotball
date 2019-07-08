@@ -84,6 +84,10 @@ class Table extends React.Component{
         })
         return(
             <React.Fragment>
+        <div className="App-header">
+          <h1 className="Overskrift">Stians fotballside</h1>
+        </div>
+        <div className="App-body">
         <table className="tableEliteserien">
             <thead>
                 <tr>
@@ -101,8 +105,7 @@ class Table extends React.Component{
                 </tr>
             </thead>
             <tbody>
-                {teamRows}
-                
+                {teamRows}                
             </tbody>
         </table>
                 <ul className="info">
@@ -111,6 +114,7 @@ class Table extends React.Component{
                   <li className="info"> <span className="boks" style={{backgroundColor: "lightcoral"}}></span> Kvalikk</li>
                   <li className="info"> <span className="boks"></span> Nedrykk</li>
                 </ul>
+            </div>
             </React.Fragment> 
         )
     }

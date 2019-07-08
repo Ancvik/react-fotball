@@ -5,7 +5,8 @@ class Match extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            teams: []
+            teams: [],
+            matches: null
         }
     }
     
@@ -14,18 +15,24 @@ class Match extends React.Component{
             .then(function(response){
                 return response.json()
             })
-            .then(data => this.setState({teams: data.teams}))
+            .then(data => this.setState({teams: data.teams, matches: data}))         
 
     }
     render(){
         if(this.state.teams.length === 0){
             return null
         }
+        if (this.state.matches === null) {
+            return null
+        }
+        const matches = this.state.matches.previousMatches;
         const firstTeam = this.state.teams[0];
         const secondTeam = this.state.teams[1];
+
        return ( 
         <React.Fragment>
-        <h2>Head to head mellom {firstTeam.name} og {secondTeam.name}</h2>       
+        <h2>Head to head mellom {firstTeam.name} og {secondTeam.name}</h2>
+        <div className="App-body"> 
             <table className="tabellHeadToHead">
                 <thead>
                     <tr>
@@ -34,7 +41,7 @@ class Match extends React.Component{
                         <th className="tabellHeadToHead">Uavgjort</th>
                         <th className="tabellHeadToHead">{secondTeam.name}</th>
                         <th className="tabellHeadToHead">Mål</th>
-                        <th className="tabellHeadToHead">Målforskjell</th>
+                        <th className="tabellHeadToHead">Differanse</th>
                     </tr>
                 </thead>
 
@@ -57,6 +64,17 @@ class Match extends React.Component{
                 </tr>
             </tbody>
         </table>
+
+        <h2>Tidligere kamper</h2>
+        {matches.map(match => (
+
+            <table className="infoHeadtoHead">
+                <td className="infoHeadtoHead">{match.name}</td>
+                <td className="infoHeadtoHead">{match.result.homeScore90} - {match.result.awayScore90}</td>
+                <td className="infoHeadtoHead">{match.stage.fullName}</td>
+            </table>
+            ))}
+        </div>      
         </React.Fragment> 
 
         );

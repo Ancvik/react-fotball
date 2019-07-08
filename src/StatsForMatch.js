@@ -24,9 +24,10 @@ class StatsForMatch extends React.Component {
         }
         const stats = this.state.matchStats;
         return (
+            
             <React.Fragment>
-                <h2>Statistikk for kampen {stats.name} i {stats.stage.fullName}</h2>
-
+            <h2>Statistikk for kampen {stats.name} i {stats.stage.fullName}</h2>
+            
                 <table className="stats">
                     <tbody>
                         <tr>
