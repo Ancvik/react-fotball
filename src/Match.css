@@ -48,3 +48,10 @@ table.tidligereKamper td{
 .textRight{
     text-align: right;
 }
+
+div.center{
+    background-color: white;
+    font-size: 40px;
+    align-self: center;
+    padding: 10px;
+}
