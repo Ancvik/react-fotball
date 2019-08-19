@@ -61,3 +61,11 @@ border: 1px solid black;
 border-spacing: 0;
 width: 500px;
 }
+
+.center{
+  align-self: center;
+}
+button{
+  font-size: 20px;
+  padding: 20px;
+}
