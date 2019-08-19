@@ -66,14 +66,16 @@ class Match extends React.Component{
         </table>
 
         <h2>Tidligere kamper</h2>
+        <table className="tidligereKamper">
         {matches.map(match => (
 
-            <table className="infoHeadtoHead">
-                <td className="infoHeadtoHead">{match.name}</td>
-                <td className="infoHeadtoHead">{match.result.homeScore90} - {match.result.awayScore90}</td>
-                <td className="infoHeadtoHead">{match.stage.fullName}</td>
-            </table>
+            <tr>
+                <td>{match.name}</td>
+                <td>{match.result.homeScore90} - {match.result.awayScore90}</td>
+                <td className="textRight">{match.stage.fullName}</td>
+            </tr>
             ))}
+        </table>
         </div>      
         </React.Fragment> 
 

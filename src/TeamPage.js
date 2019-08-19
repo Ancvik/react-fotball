@@ -10,7 +10,7 @@ class TeamPage extends React.Component{
     }
     
     componentDidMount() {
-        fetch(`https://api.nifs.no/teams/${this.props.match.params.teamId}`)
+        fetch(`https://nifs.laps.dev/teams/${this.props.match.params.teamId}`)
             .then(function(response){
                 return response.json()
             })
@@ -22,7 +22,7 @@ class TeamPage extends React.Component{
             return null
         }
         const teamInfo = this.state.team
-        console.log(this.state.team.kits.colorCodes)
+        console.log(this.state.team.kits)
         return (
             <div style={{backgroundColor: teamInfo.kits.colorCodes}}>
 

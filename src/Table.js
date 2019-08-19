@@ -21,7 +21,7 @@ class Table extends React.Component{
     render(){
 
         const sortedTeams = this.state.teams.sort((team1, team2) => {
-            return team1.position - team2.position
+            return team1.place - team2.place
           })
         const teamRows = sortedTeams.map((team)=> {
         

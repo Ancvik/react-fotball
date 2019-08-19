@@ -22,6 +22,7 @@ class StatsForMatch extends React.Component {
         if (this.state.matchStats === null) {
             return null
         }
+
         const stats = this.state.matchStats;
         return (
             
