@@ -172,26 +172,26 @@ class Analyse extends React.Component {
                 <div className="App-body">
                     <Link to={`/`} className="center"><button>Gå til nåværende tabell</button></Link>
                     <TableView teams={sortedTable}></TableView>
-                    <table className="tidligereKamper">
-                        <tr>
-                            <td>Kamp</td>
-                            <td>Hjemme</td>
-                            <td>Uavgjort</td>
-                            <td>Borte</td>
-                            <td>Totalt</td>
-                        </tr>
-                        {roundingToTwoDecimals.map(match => (
-
+                        <table className="simulatedMatches">
                             <tr>
-                                <td>{match.name}</td>
-                                <td>{match.percentHome}%</td>
-                                <td>{match.percentDraw}%</td>
-                                <td>{match.percentAway}%</td>
-                                <td>{match.percentAway + match.percentDraw + match.percentHome}%</td>
+                                <td>Kamp</td>
+                                <td className="textRight padding">Hjemme</td>
+                                <td className="textRight padding">Uavgjort</td>
+                                <td className="textRight padding">Borte</td>
+                                <td className="textRight">Totalt</td>
                             </tr>
-                        ))}
+                            {roundingToTwoDecimals.map(match => (
 
-                    </table>
+                                <tr>
+                                    <td>{match.name}</td>
+                                    <td className="textRight padding">{match.percentHome.toFixed(1)}%</td>
+                                    <td className="textRight padding">{match.percentDraw.toFixed(1)}%</td>
+                                    <td className="textRight padding">{match.percentAway.toFixed(1)}%</td>
+                                    <td className="textRight">{(match.percentAway + match.percentDraw + match.percentHome).toFixed(1)}%</td>
+                                </tr>
+                            ))}
+
+                        </table>
                 </div>
             </React.Fragment>
         )

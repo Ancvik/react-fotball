@@ -71,7 +71,7 @@ class TableView extends React.Component{
                     </tr>
         })
         return(
-        <div className="App-body">
+        <div className="tableView">
         <table className="tableEliteserien">
             <thead>
                 <tr>
