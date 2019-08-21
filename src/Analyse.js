@@ -110,10 +110,12 @@ class Analyse extends React.Component {
 
         futureMatches.forEach(match => {
             const matchStatisic = (probabilityTable[match.name] || {
-                matchBetween: match.homeTeam.name + "-" + match.awayTeam.name,
                 homeVictory: 0,
                 draw: 0,
-                awayVictory: 0
+                awayVictory: 0,
+                fiksId: 0,
+                homeGoals: 0,
+                awayGoals: 0
             })
 
             const result = predictedResults(playedMatches, match.homeTeam.name, match.awayTeam.name)
@@ -130,6 +132,9 @@ class Analyse extends React.Component {
                     }
                 })
             })
+            matchStatisic.homeGoals = result.numberOfGoalsHome;
+            matchStatisic.awayGoals = result.numberOfGoalsAway;
+            matchStatisic.fiksId = match.externalIds.fiks
             probabilityTable[match.name] = matchStatisic
         })
 
@@ -138,26 +143,21 @@ class Analyse extends React.Component {
                 name: keyValue[0],
                 homeVictory: keyValue[1].homeVictory,
                 draw: keyValue[1].draw,
-                awayVictory: keyValue[1].awayVictory
-
+                awayVictory: keyValue[1].awayVictory,
+                fiksId: keyValue[1].fiksId,
+                homeGoals: keyValue[1].homeGoals,
+                awayGoals: keyValue[1].awayGoals,
             }
         })
 
-        console.log(simulatedMatches)
-
-        /*   const roundingToTwoDecimals = simulatedMatches.map(match => ({
-              oeuo: "oeuoaue"
-          }))
-          const roundingToTwoDecimals = simulatedMatches.map(match => {
-              return {   
-                  oeuo: "oeuoaue"
-              }
-          }) */
         const roundingToTwoDecimals = simulatedMatches.map(match => ({
             name: match.name,
             percentHome: +(match.homeVictory * 100).toFixed(1),
             percentDraw: +(match.draw * 100).toFixed(1),
-            percentAway: +(match.awayVictory * 100).toFixed(1)
+            percentAway: +(match.awayVictory * 100).toFixed(1),
+            fiksId: match.fiksId,
+            homeGoals: match.homeGoals,
+            awayGoals: match.awayGoals,
         }))
 
         console.log(roundingToTwoDecimals)
@@ -178,16 +178,18 @@ class Analyse extends React.Component {
                                 <td className="textRight padding">Hjemme</td>
                                 <td className="textRight padding">Uavgjort</td>
                                 <td className="textRight padding">Borte</td>
-                                <td className="textRight">Totalt</td>
+                                <td className="textRight padding">Totalt</td>
+                                <td className="textRight padding">Forventet resultat</td>
                             </tr>
                             {roundingToTwoDecimals.map(match => (
 
                                 <tr>
-                                    <td>{match.name}</td>
+                                    <td><Link to={`/simulatedMatch/${match.fiksId}`} className="LinkColor">{match.name}</Link></td>
                                     <td className="textRight padding">{match.percentHome.toFixed(1)}%</td>
                                     <td className="textRight padding">{match.percentDraw.toFixed(1)}%</td>
                                     <td className="textRight padding">{match.percentAway.toFixed(1)}%</td>
-                                    <td className="textRight">{(match.percentAway + match.percentDraw + match.percentHome).toFixed(1)}%</td>
+                                    <td className="textRight padding">{(match.percentAway + match.percentDraw + match.percentHome).toFixed(1)}%</td>
+                                    <td className="textCenter padding">{match.homeGoals} - {match.awayGoals}</td>
                                 </tr>
                             ))}
 

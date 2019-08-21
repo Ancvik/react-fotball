@@ -1,6 +1,20 @@
 import pmf from "distributions-poisson-pmf"
 
-export function predictedResults(playedMatches, homeTeam, awayTeam) {
+
+export function calculateStrength(matches = [], goalsScoredReducer, goalsConcededReducer, goalsAverage, goalsConceededAverage) {
+
+    const goalsScored = matches.reduce(goalsScoredReducer, 0);
+    const goalsConceded = matches.reduce(goalsConcededReducer, 0);
+    const attack = (goalsScored / matches.length) / goalsAverage
+    const defense = (goalsConceded / matches.length) / goalsConceededAverage
+
+    return {
+        attack,
+        defense
+    }
+}
+
+export function predictedResults(playedMatches = [], homeTeam = "", awayTeam = "") {
 
     const sumHomeGoals = (previous, current) => {
         return previous + current.homeGoals;
@@ -21,26 +35,39 @@ export function predictedResults(playedMatches, homeTeam, awayTeam) {
 
     const totalGoalsAway = simplifiedMatchList.reduce(sumAwayGoals, 0);
 
-    const numberOfMatches = simplifiedMatchList.length;
+    const numberOfMatchesPlayed = simplifiedMatchList.length;   
 
-    const matchesHome = simplifiedMatchList.filter(match => (match.homeTeam === homeTeam));
-    const goalsScoredAtHome = matchesHome.reduce(sumHomeGoals, 0);
-    const goalsConcededAtHome = matchesHome.reduce(sumAwayGoals, 0);
-    const attackingStrengthHome = (goalsScoredAtHome / matchesHome.length) / (totalGoalsHome / numberOfMatches)
-    const defensiveStrengthHome = (goalsConcededAtHome / matchesHome.length) / (totalGoalsAway / numberOfMatches)
+    const averageGoalsHome = (totalGoalsHome / numberOfMatchesPlayed);
+    const averageGoalsAway = (totalGoalsAway / numberOfMatchesPlayed);
+
+    const homeTeamMatchesReversed = simplifiedMatchList.filter(match => match.homeTeam === homeTeam)
+                                    .reverse()
+    const homeTeamMatchesRecent = homeTeamMatchesReversed.filter((_,index) => (index <= 2))
+    const homeTeamMatchesRest = homeTeamMatchesReversed.filter((_,index) => (index > 2))
+
+    const homeStrengthRecent = calculateStrength(homeTeamMatchesRecent, sumHomeGoals, sumAwayGoals, averageGoalsHome, averageGoalsAway);
+    const homeRest = calculateStrength(homeTeamMatchesRest, sumHomeGoals, sumAwayGoals, averageGoalsHome, averageGoalsAway);
+
+    const attackingStrengthHome = ((homeStrengthRecent.attack * 1.3) + (homeRest.attack * 0.7)) / 2;
+    const defensiveStrengthHome = ((homeStrengthRecent.defense * 0.7) + (homeRest.defense * 1.3)) / 2;
+
+    const awayTeamMatchesReversed = simplifiedMatchList.filter(match => match.awayTeam === homeTeam)
+                                    .reverse()
+    const awayTeamMatchesRecent = awayTeamMatchesReversed.filter((_,index) => (index <= 2))
+    const awayTeamMatchesRest = awayTeamMatchesReversed.filter((_,index) => (index > 2))
+
+    const awayStrengthRecent = calculateStrength(awayTeamMatchesRecent, sumAwayGoals, sumHomeGoals, averageGoalsAway, averageGoalsAway);
+    const awayRest = calculateStrength(awayTeamMatchesRest, sumAwayGoals, sumHomeGoals, averageGoalsAway, averageGoalsHome);
+
+    const attackingStrengthAway = ((awayStrengthRecent.attack * 1.3) + (awayRest.attack * 0.7)) / 2;
+    const defensiveStrengthAway = ((awayStrengthRecent.defense * 0.7) + (awayRest.defense * 1.3)) / 2;
+
+    const poissonHomeTeam = attackingStrengthHome * defensiveStrengthAway * averageGoalsHome
+    const poissonAwayTeam = defensiveStrengthHome * attackingStrengthAway * averageGoalsAway
 
 
-    const matchesAway = simplifiedMatchList.filter(match => (match.awayTeam === awayTeam));
-    const goalsScoredAway = matchesAway.reduce(sumAwayGoals, 0);
-    const goalsConcededAway = matchesAway.reduce(sumHomeGoals, 0);
-    const attackingStrengthAway = (goalsScoredAway / matchesAway.length) / (totalGoalsAway / numberOfMatches)
-    const defensiveStrengthAway = (goalsConcededAway / matchesAway.length) / (totalGoalsAway / numberOfMatches)
 
-
-    const poissonHomeTeam = attackingStrengthHome * defensiveStrengthAway * (totalGoalsHome / numberOfMatches)
-    const poissonAwayTeam = defensiveStrengthHome * attackingStrengthAway * (totalGoalsAway / numberOfMatches)
-
-    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ,10, 11, 12];
 
     const probabilityForHomeGoals = pmf(x, {
         lambda: poissonHomeTeam,

@@ -7,6 +7,7 @@ import TeamPage from "./TeamPage"
 import Match from "./Match"
 import StatsForMatch from "./StatsForMatch"
 import Analyse from "./Analyse"
+import SimulatedMatch from "./SimulatedMatch"
 
 class App extends React.Component {
 
@@ -21,6 +22,7 @@ class App extends React.Component {
           <Route path="/match/:matchId" component={Match} />
           <Route path="/matchstats/:matchId" component={StatsForMatch} /> 
           <Route path="/simulatedTable" component={Analyse} /> 
+          <Route path="/simulatedMatch/:matchId" component={SimulatedMatch} /> 
       </Router>
     );
   }
