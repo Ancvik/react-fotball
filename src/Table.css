@@ -78,7 +78,8 @@ button{
 table.simulatedMatches{
   background-color: white;
   align-self: center;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+  margin-top: 40px;
 }
 td.padding{
   padding-right: 40px;
