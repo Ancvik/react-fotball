@@ -178,6 +178,7 @@ class Analyse extends React.Component {
                             <td>Hjemme</td>
                             <td>Uavgjort</td>
                             <td>Borte</td>
+                            <td>Totalt</td>
                         </tr>
                         {roundingToTwoDecimals.map(match => (
 
@@ -186,6 +187,7 @@ class Analyse extends React.Component {
                                 <td>{match.percentHome}%</td>
                                 <td>{match.percentDraw}%</td>
                                 <td>{match.percentAway}%</td>
+                                <td>{match.percentAway + match.percentDraw + match.percentHome}%</td>
                             </tr>
                         ))}
 
