@@ -13,7 +13,7 @@ class App extends React.Component {
   render(){
 
     return (
-      <React.Fragment>
+      
       <Router>
           <Route path="/" exact component={Table} />
           <Route path="/team/:teamId" component={Team} />
@@ -22,7 +22,6 @@ class App extends React.Component {
           <Route path="/matchstats/:matchId" component={StatsForMatch} /> 
           <Route path="/simulatedTable" component={Analyse} /> 
       </Router>
-      </React.Fragment>
     );
   }
 }

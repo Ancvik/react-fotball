@@ -40,7 +40,7 @@ export function predictedResults(playedMatches, homeTeam, awayTeam) {
     const poissonHomeTeam = attackingStrengthHome * defensiveStrengthAway * (totalGoalsHome / numberOfMatches)
     const poissonAwayTeam = defensiveStrengthHome * attackingStrengthAway * (totalGoalsAway / numberOfMatches)
 
-    const x = [0, 1, 2, 3, 4, 5];
+    const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     const probabilityForHomeGoals = pmf(x, {
         lambda: poissonHomeTeam,
@@ -60,7 +60,9 @@ export function predictedResults(playedMatches, homeTeam, awayTeam) {
 
     const result = {
         numberOfGoalsHome: numberOfGoalsHome,
-        numberOfGoalsAway: numberOfGoalsAway
+        numberOfGoalsAway: numberOfGoalsAway,
+        probabilityForHomeGoals: probabilityForHomeGoals,
+        probabilityForAwayGoals: probabilityForAwayGoals
     }
     return result
 }
